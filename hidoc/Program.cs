@@ -1,3 +1,6 @@
+using hidoc.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options=>options.AddDefaultPolicy(polycy => polycy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
+builder.Services.AddDbContext<HiDocDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("HiDoc")));
 
 var app = builder.Build();
 
