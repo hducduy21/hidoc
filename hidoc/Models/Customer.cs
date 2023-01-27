@@ -6,8 +6,8 @@ namespace hidoc.Models
     {
         [Key]
         public Guid Id { get; set; }
-        public User user { get; set; }
+        public User? user { get; set; }
         public string history { get; set; }
-        public ICollection<Sign_Schedule> schedules { get; set; }
+        public ICollection<Sign_Schedule>? schedules { get; set; }
     }
 }

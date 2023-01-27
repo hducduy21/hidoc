@@ -10,10 +10,29 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddTransient<DbInitializer>();
 builder.Services.AddCors(options=>options.AddDefaultPolicy(polycy => polycy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 builder.Services.AddDbContext<HiDocDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("HiDoc")));
 
+
 var app = builder.Build();
+
+if (args.Length==1 && args[0].ToLower() == "seeddata")
+{
+    SeedData(app);
+}
+
+void SeedData(IHost app)
+{
+    var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+    using (var scope = scopedFactory.CreateScope())
+    {
+        var s = scope.ServiceProvider.GetService<DbInitializer>();
+        s.Seed();
+    }
+}
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

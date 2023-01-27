@@ -6,6 +6,7 @@ namespace hidoc.Models
     public class Hospital
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
         [MaxLength(50)]
         public string Name { get; set; }
@@ -13,7 +14,7 @@ namespace hidoc.Models
         [MaxLength(50)]
         public string Address { get; set; }
 
-        public ICollection<Hospital_Department> Hospital_Departments { get; set; }
+        public ICollection<Hospital_Department>? Hospital_Departments { get; set; }
 
 
     }

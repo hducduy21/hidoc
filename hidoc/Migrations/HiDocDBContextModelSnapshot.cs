@@ -25,7 +25,6 @@ namespace hidoc.Migrations
             modelBuilder.Entity("hidoc.Models.Admin", b =>
                 {
                     b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ID");
@@ -36,7 +35,6 @@ namespace hidoc.Migrations
             modelBuilder.Entity("hidoc.Models.Customer", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("history")
@@ -92,10 +90,12 @@ namespace hidoc.Migrations
             modelBuilder.Entity("hidoc.Models.Doctor", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("DID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("level")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -219,7 +219,7 @@ namespace hidoc.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("DoctorID")
+                    b.Property<Guid?>("DoctorID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("date")
@@ -286,10 +286,10 @@ namespace hidoc.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<Guid>("CustomerID")
+                    b.Property<Guid?>("CustomerID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ScheID")
+                    b.Property<int?>("ScheID")
                         .HasColumnType("int");
 
                     b.Property<string>("prescription")
@@ -319,6 +319,7 @@ namespace hidoc.Migrations
             modelBuilder.Entity("hidoc.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
@@ -330,16 +331,24 @@ namespace hidoc.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
+                    b.Property<bool>("Gender")
+                        .HasMaxLength(30)
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("birthday")
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
@@ -353,6 +362,28 @@ namespace hidoc.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User", (string)null);
+                });
+
+            modelBuilder.Entity("hidoc.Models.Admin", b =>
+                {
+                    b.HasOne("hidoc.Models.User", "User")
+                        .WithOne("admin")
+                        .HasForeignKey("hidoc.Models.Admin", "ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("hidoc.Models.Customer", b =>
+                {
+                    b.HasOne("hidoc.Models.User", "user")
+                        .WithOne("customer")
+                        .HasForeignKey("hidoc.Models.Customer", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("hidoc.Models.Disease", b =>
@@ -374,7 +405,15 @@ namespace hidoc.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("hidoc.Models.User", "user")
+                        .WithOne("doctor")
+                        .HasForeignKey("hidoc.Models.Doctor", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("department");
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("hidoc.Models.Hospital_Department", b =>
@@ -422,9 +461,7 @@ namespace hidoc.Migrations
                 {
                     b.HasOne("hidoc.Models.Doctor", "Doctor")
                         .WithMany("schedules")
-                        .HasForeignKey("DoctorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DoctorID");
 
                     b.Navigation("Doctor");
                 });
@@ -433,59 +470,20 @@ namespace hidoc.Migrations
                 {
                     b.HasOne("hidoc.Models.Customer", "Customer")
                         .WithMany("schedules")
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerID");
 
                     b.HasOne("hidoc.Models.Schedule", "schedule")
                         .WithMany("Sign_Schedule")
-                        .HasForeignKey("ScheID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ScheID");
 
                     b.Navigation("Customer");
 
                     b.Navigation("schedule");
                 });
 
-            modelBuilder.Entity("hidoc.Models.User", b =>
-                {
-                    b.HasOne("hidoc.Models.Admin", "admin")
-                        .WithOne("User")
-                        .HasForeignKey("hidoc.Models.User", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("hidoc.Models.Customer", "customer")
-                        .WithOne("user")
-                        .HasForeignKey("hidoc.Models.User", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("hidoc.Models.Doctor", "doctor")
-                        .WithOne("user")
-                        .HasForeignKey("hidoc.Models.User", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("admin");
-
-                    b.Navigation("customer");
-
-                    b.Navigation("doctor");
-                });
-
-            modelBuilder.Entity("hidoc.Models.Admin", b =>
-                {
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("hidoc.Models.Customer", b =>
                 {
                     b.Navigation("schedules");
-
-                    b.Navigation("user")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("hidoc.Models.Department", b =>
@@ -498,9 +496,6 @@ namespace hidoc.Migrations
             modelBuilder.Entity("hidoc.Models.Doctor", b =>
                 {
                     b.Navigation("schedules");
-
-                    b.Navigation("user")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("hidoc.Models.Hospital", b =>
@@ -523,6 +518,12 @@ namespace hidoc.Migrations
                     b.Navigation("News");
 
                     b.Navigation("Reports");
+
+                    b.Navigation("admin");
+
+                    b.Navigation("customer");
+
+                    b.Navigation("doctor");
                 });
 #pragma warning restore 612, 618
         }

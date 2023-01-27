@@ -6,9 +6,10 @@ namespace hidoc.Models
     public class Schedule
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
-        public Guid DoctorID { get; set; }
-        public Doctor Doctor { get; set; }
+        public Guid? DoctorID { get; set; }
+        public Doctor? Doctor { get; set; }
         [MaxLength(15)]
         public String date { get; set; }
         [MaxLength(15)]
@@ -18,7 +19,7 @@ namespace hidoc.Models
         public int maxNum { get; set; }
         public string Address { get; set; }
 
-        public ICollection<Sign_Schedule> Sign_Schedule { get; set; }
+        public ICollection<Sign_Schedule>? Sign_Schedule { get; set; }
 
 
     }

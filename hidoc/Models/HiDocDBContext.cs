@@ -31,18 +31,12 @@ namespace hidoc.Models
             modelBuilder.Entity<Admin>(e =>
             {
                 e.ToTable("Admin");
-                e.HasOne(u => u.User).WithOne(u => u.admin).HasForeignKey<User>(u => u.Id);
+                e.HasOne(s => s.User).WithOne(u => u.admin).HasForeignKey<Admin>(s => s.ID);
             });
             modelBuilder.Entity<Customer>(e =>
             {
                 e.ToTable("Customer");
-                e.HasOne(u => u.user).WithOne(u => u.customer).HasForeignKey<User>(u => u.Id);
-            });
-            modelBuilder.Entity<Doctor>(e =>
-            {
-                e.ToTable("Doctor");
-                e.HasOne(u => u.user).WithOne(u => u.doctor).HasForeignKey<User>(u => u.Id);
-                e.HasOne(u => u.department).WithMany(u => u.Doctors).HasForeignKey(u => u.DID);
+                e.HasOne(s => s.user).WithOne(u => u.customer).HasForeignKey<Customer>(s => s.Id);
             });
             modelBuilder.Entity<Hospital>(e =>
             {
@@ -52,17 +46,26 @@ namespace hidoc.Models
             {
                 e.ToTable("Department");
             });
+            modelBuilder.Entity<Disease>(e =>
+            {
+                e.ToTable("Disease");
+                e.HasOne(e => e.Department).WithMany(e => e.diseases).HasForeignKey(u => u.DID);
+            });
             modelBuilder.Entity<Hospital_Department>(e =>
             {
                 e.ToTable("Hospital_Department");
                 e.HasOne(e => e.Hospital).WithMany(e => e.Hospital_Departments).HasForeignKey(u => u.HID);
                 e.HasOne(e => e.Department).WithMany(e => e.Hospital_Departments).HasForeignKey(u => u.DID);
             });
-            modelBuilder.Entity<Disease>(e =>
+            modelBuilder.Entity<Doctor>(e =>
             {
-                e.ToTable("Disease");
-                e.HasOne(e => e.Department).WithMany(e => e.diseases).HasForeignKey(u => u.DID);
+                e.ToTable("Doctor");
+                e.HasOne(s => s.user).WithOne(u => u.doctor).HasForeignKey<Doctor>(s => s.Id);
+                e.HasOne(u => u.department).WithMany(u => u.Doctors).HasForeignKey(u => u.DID);
             });
+            
+           
+            
             modelBuilder.Entity<News>(e =>
             {
                 e.ToTable("News");

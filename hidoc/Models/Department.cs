@@ -6,11 +6,12 @@ namespace hidoc.Models
     public class Department
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
         [Required]
         [MaxLength(75)]
         public string Name { get; set; }
-        public ICollection<Hospital_Department> Hospital_Departments { get; set; }
-        public ICollection<Disease> diseases { get; set; }
+        public ICollection<Hospital_Department>? Hospital_Departments { get; set; }
+        public ICollection<Disease>? diseases { get; set; }
     }
 }
