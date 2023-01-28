@@ -268,3 +268,4 @@ C:\Users\Duy.DESKTOP-VIT0CG8\Documents\2022_2023_HK2\dotNet\hidoc\hidoc\obj\Debu
 C:\Users\Duy.DESKTOP-VIT0CG8\Documents\2022_2023_HK2\dotNet\hidoc\hidoc\obj\Debug\net6.0\hidoc.pdb
 C:\Users\Duy.DESKTOP-VIT0CG8\Documents\2022_2023_HK2\dotNet\hidoc\hidoc\obj\Debug\net6.0\hidoc.genruntimeconfig.cache
 C:\Users\Duy.DESKTOP-VIT0CG8\Documents\2022_2023_HK2\dotNet\hidoc\hidoc\obj\Debug\net6.0\ref\hidoc.dll
+C:\Users\Duy.DESKTOP-VIT0CG8\Documents\2022_2023_HK2\dotNet\hidoc\hidoc\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
