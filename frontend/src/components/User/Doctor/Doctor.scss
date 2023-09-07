@@ -1,0 +1,136 @@
+.doctorContainer {
+    width: 100%;
+    height: auto;
+    padding: 100px 112px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    @media (max-width: 1241px) {
+        padding: 100px 50px;
+    }
+
+    & > .left {
+        display: inline-block;
+        width: 60%;
+        height: auto;
+        background-color: #ffffff;
+        padding: 20px;
+        img {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            height: 300px;
+        }
+        .title {
+            display: block;
+            font-size: 21px;
+
+            margin-top: 15px;
+        }
+        .hospital {
+            width: 100%;
+            text-align: left;
+            margin-top: 15px;
+            .hospital_name {
+                font-weight: 500;
+                font-size: 18px;
+                margin-left: 10px;
+            }
+        }
+        .location {
+            width: 100%;
+            text-align: left;
+            .location_name {
+                font-weight: 500;
+                font-size: 15px;
+                margin-left: 15px;
+            }
+        }
+
+        .desc {
+            display: block;
+            text-align: justify;
+            color: #525252;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        @media (max-width: 920px) {
+            width: 100%;
+        }
+
+        // &::after{
+        //     position: relative;
+        //     content: "123";
+        //     color: blue;
+        //     width: 5px;
+        //     height: 100%;
+        //     background-color: #525252;
+        //     display: inline-block;
+        // }
+    }
+    & > .right {
+        position: relative;
+        display: inline-block;
+        width: 60%;
+        min-height: 500px;
+        height: auto;
+        .day {
+            border: 2px solid #575757;
+            width: auto;
+            width: 120px;
+            text-align: left;
+            padding: 0 15px;
+            font-weight: 500;
+        }
+        .listSign {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 10px 0 0 0;
+            & > * {
+                font-weight: 500;
+                font-size: 15px;
+                border: 3px solid rgb(206, 206, 206);
+                padding: 5px 10px;
+                width: 150px;
+                cursor: pointer;
+                transition: all 0.2 ease;
+                margin-bottom: 20px;
+
+                &:hover {
+                    border: 3px solid #25ccf7;
+                }
+            }
+            .whiteDensity {
+                background-color: #f1f2f6;
+            }
+            .yellowDensity {
+                background-color: #fbc531;
+            }
+            .greenDensity {
+                background-color: #20bf6b;
+            }
+            .redDensity {
+                background-color: #eb2f06;
+            }
+            .noDensity {
+                background-color: #d1d8e0;
+                border: 1px solid rgb(206, 206, 206);
+                color: #989898;
+                &:hover {
+                    background-color: #d1d8e0;
+                    border: 1px solid rgb(173, 173, 173);
+                    color: #989898;
+                }
+            }
+        }
+
+        @media (max-width: 920px) {
+            width: 100%;
+        }
+    }
+    @media (max-width: 920px) {
+        flex-direction: column;
+        padding: 100px 20px;
+    }
+}

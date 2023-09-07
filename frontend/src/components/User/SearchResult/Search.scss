@@ -1,0 +1,53 @@
+.search_wrapper {
+    padding: 70px 50px 70px 50px;
+    @media (max-width: 1200px) {
+        padding: 70px 60px 70px 60px;
+    }
+    @media (max-width: 576px) {
+        padding: 70px 10px 70px 10px;
+    }
+    .search_title {
+        padding: 20px;
+        text-align: left;
+    }
+    .search_wrapper_detail {
+        padding: 0 10px;
+        .search_detail {
+            padding: 10px;
+            background-color: var(--main);
+            display: flex;
+            justify-content: left;
+            & > div[class^='search_detail_'] {
+                margin-bottom: 10px;
+                span {
+                    margin-right: 10px;
+                }
+                select {
+                    font-size: 12px;
+                    height: 20px;
+                }
+            }
+            .search_detail_pricerange {
+                margin-left: 20px;
+            }
+        }
+    }
+    .search_wrapper_result {
+        padding: 0 10px;
+        .search_result {
+            background-color: var(--main);
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: 20px;
+            & > * {
+                margin-bottom: 30px;
+            }
+            .search_title {
+                width: 100%;
+                padding: 0 25px;
+                font-size: 24px;
+            }
+        }
+    }
+}

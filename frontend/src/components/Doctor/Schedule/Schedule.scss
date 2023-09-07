@@ -1,0 +1,70 @@
+.Schedule_wrapper {
+    padding: 100px 50px;
+
+    table {
+        text-align: left;
+        margin-bottom: 50px;
+        tr {
+            height: 40px;
+            margin: 5px;
+            td {
+                width: 40px;
+                span {
+                    width: 100%;
+                    height: 100%;
+                    font-weight: 500;
+                    font-size: 15px;
+                    border: 3px solid #b0b0b0;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    transition: all 0.2 ease;
+                    margin-bottom: 20px;
+
+                    &:hover {
+                        border: 3px solid #25ccf7;
+                    }
+                }
+                .whiteDensity {
+                    background-color: #f1f2f6;
+                }
+                .yellowDensity {
+                    background-color: #fbc531;
+                }
+                .greenDensity {
+                    background-color: #20bf6b;
+                }
+                .redDensity {
+                    background-color: #eb2f06;
+                }
+                .noneDestiny {
+                    border: none;
+                    &:hover {
+                        border: none;
+                    }
+                }
+                .noDensity {
+                    background-color: #d1d8e0;
+                    border: 1px solid rgb(173, 173, 173);
+                    color: #989898;
+                    &:hover {
+                        background-color: #d1d8e0;
+                        border: 1px solid rgb(173, 173, 173);
+                        color: #989898;
+                    }
+                }
+            }
+        }
+    }
+    .Schedule_add {
+        display: flex;
+        justify-content: right;
+    }
+    .modal_schedule {
+        .modal_add_schedule {
+            width: 300px;
+        }
+        .time_hour {
+            width: 30px;
+        }
+    }
+}

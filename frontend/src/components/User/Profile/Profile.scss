@@ -1,0 +1,75 @@
+.profile_wrapper_outer {
+    padding: 70px 40px 40px 40px;
+    overflow: hidden;
+    .profile_wrapper {
+        height: 600px;
+        background-color: var(--main);
+        padding: 30px 70px;
+        & > * {
+            padding: 20px;
+            background-color: var(--main);
+        }
+        .profile_content {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+
+            .profile_title {
+                text-align: center;
+            }
+        }
+        .profile_leftbar {
+            height: 100%;
+        }
+        .profile_rightbar {
+            height: 520px;
+            overflow-y: scroll;
+            padding-bottom: 0;
+            .profile_content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .profile_input {
+                    width: 300px;
+                }
+            }
+            .history_order {
+                width: auto;
+                padding: 10px;
+                background-color: #ffffff;
+                box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+                .history_order_list {
+                    margin: 0;
+                    td {
+                        height: 70px;
+                        padding: 5px 30px;
+                        display: flex;
+                        .history_order_img {
+                            padding: 0;
+                            img {
+                                height: 60px;
+                            }
+                        }
+                        .history_order_product_price {
+                            flex: 1;
+                            text-align: right;
+                        }
+                        h5 {
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
+                }
+                .history_order_price {
+                    padding: 10px 10px;
+                    margin: 0;
+                    text-align: right;
+                }
+            }
+            .history_order + .history_order {
+                margin-top: 30px;
+            }
+        }
+    }
+}

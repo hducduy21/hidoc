@@ -1,0 +1,51 @@
+.HospitalContainer {
+    & > img {
+        object-fit: cover;
+        height: 200px;
+        width: 100%;
+    }
+    .title {
+        margin-top: 20px;
+        table {
+            width: 100%;
+            text-align: left;
+            .icon {
+                font-size: 100px;
+                line-height: 100px;
+            }
+            .name {
+                line-height: 28px;
+                font-size: 28px;
+                font-weight: 500;
+                margin-left: 20px;
+                vertical-align: top;
+            }
+            .address {
+                margin-left: 20px;
+
+                .addressIcon {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+    & > .content {
+        margin: 40px 0 20px 0;
+
+        .content_content_row {
+            text-align: justify;
+            line-height: 30px;
+            margin-top: 10px;
+            span {
+                margin-left: 15px;
+            }
+            small {
+                margin-left: 20px;
+            }
+        }
+        .content_content_1 {
+            text-align: left;
+            display: block;
+        }
+    }
+}

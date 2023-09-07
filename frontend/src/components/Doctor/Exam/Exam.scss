@@ -1,0 +1,20 @@
+.Exam_Wrapper {
+    padding: 100px 50px;
+    .Exam_chooise {
+        padding-top: 50px;
+        border-right: 1px solid black;
+        .Exam_chooise_form {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .Exam_info {
+        border-right: 1px solid black;
+        .table_user_info {
+            text-align: left;
+            tr {
+                height: 30px;
+            }
+        }
+    }
+}

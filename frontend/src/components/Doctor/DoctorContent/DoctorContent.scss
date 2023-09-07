@@ -1,0 +1,64 @@
+.DoctorContent {
+    .container {
+        padding-top: 20px;
+        margin-bottom: 100px;
+        .Doctor_box {
+            padding: 5px;
+            .box_function--red {
+                border: 3px solid #e74c3c;
+                color: #e74c3c;
+            }
+            .box_function--green {
+                border: 3px solid #079992;
+                color: #079992;
+            }
+            .box_function {
+                font-weight: 700;
+                font-size: 18px;
+                width: 100%;
+                height: 180px;
+                margin-bottom: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background-color: #eaebeb;
+                border-radius: 3px;
+                cursor: pointer;
+                &:hover {
+                    scale: 1.05;
+                }
+                .doctor_function_box_icon {
+                    font-size: 40px;
+                }
+            }
+        }
+        .Doctor_row2 {
+            .Doctor_row2_title {
+                height: 30px;
+                text-align: left;
+                font-size: 25px;
+                line-height: 25px;
+                font-weight: 700;
+            }
+            .doctor_notif {
+                cursor: pointer;
+                margin: 5px 0;
+                background-color: #8dcf7f;
+                border-radius: 1px;
+                text-align: left;
+                padding: 10px 20px;
+                &:hover {
+                    scale: 1.04;
+                }
+                .notif_title {
+                    font-weight: 700;
+                }
+                .notif_date {
+                    text-align: right;
+                    font-weight: 400;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
